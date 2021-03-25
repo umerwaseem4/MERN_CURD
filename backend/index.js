@@ -1,12 +1,14 @@
 import express from "express";
 import db from "./db.js";
 import blogRoutes from "./routes/blogRoutes.js";
+import cors from "cors";
 
 const app = express();
 
 // app middlwares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // database connection
 db();

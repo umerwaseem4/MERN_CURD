@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import classes from "./create.module.css";
-import { postBlog } from "../../actions/blogs";
+// import classes from "./create.module.css";
+import { updateBlog } from "../../actions/blogs";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 const Create = () => {
   const [post, setPost] = useState({
     title: "",
@@ -10,14 +11,15 @@ const Create = () => {
   });
   const dispatch = useDispatch();
   const history = useHistory();
+  const { id } = useParams();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postBlog(post));
+    dispatch(updateBlog(id, post));
     history.push("/");
   };
   console.log(post);
   return (
-    <div className={`container ${classes.form_create}`}>
+    <div className={`container`}>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
