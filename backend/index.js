@@ -16,6 +16,9 @@ app.use(cors());
 db();
 
 // blog routes
+app.get("/", (req, res) => {
+  res.send("Hello go back to the route");
+});
 app.use("/api/blogs", blogRoutes);
 
 const PORT = process.env.PORT || 5000;
